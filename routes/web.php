@@ -17,16 +17,16 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/', function () {
     return redirect('/dashboard');
 });
 
-/* @see MeasurementController::index() */
-Route::get('/dashboard', 'MeasurementController@index')->name('dashboard');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', 'ProfileController@index');
 
-/* @see MeasurementController::store() */
-Route::post('/measurements', 'MeasurementController@store');
+    /* @see MeasurementController::index() */
+    Route::get('/dashboard', 'MeasurementController@index')->name('dashboard');
+
+    /* @see MeasurementController::store() */
+    Route::post('/measurements', 'MeasurementController@store');
+});
 
