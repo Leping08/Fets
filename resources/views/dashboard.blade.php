@@ -16,7 +16,7 @@
 
 {{--                <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md mt-6 mb-6">--}}
 {{--                    <div class="rounded overflow-hidden shadow-lg">--}}
-{{--                        <div class="font-semibold bg-orange-400 text-gray-900 py-3 px-6 mb-0">--}}
+{{--                        <div class="font-semibold bg-indigo-400 text-gray-900 py-3 px-6 mb-0">--}}
 {{--                            View Other People--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
@@ -38,7 +38,7 @@
 
             <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md mt-6 mb-6">
                 <div class="rounded overflow-hidden shadow-lg">
-                    <div class="font-semibold bg-orange-400 text-gray-900 py-3 px-6 mb-0">
+                    <div class="font-semibold bg-indigo-500 text-gray-100 py-3 px-6 mb-0">
                         Add Measurement
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="calories_eaten" name="calories_eaten" type="number" placeholder="1400">
                         </div>
                         <div>
-                            <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                                 Submit
                             </button>
                         </div>

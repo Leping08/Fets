@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return redirect('/dashboard');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', 'ProfileController@index');
 
     /* @see MeasurementController::index() */
     Route::get('/dashboard', 'MeasurementController@index')->name('dashboard');
+
+    /* @see ProfileController::index() */
+    Route::get('/profile', 'ProfileController@index')->name('profile');
 
     /* @see MeasurementController::store() */
     Route::post('/measurements', 'MeasurementController@store');

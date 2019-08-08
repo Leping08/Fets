@@ -1,6 +1,6 @@
 <template>
     <div class="rounded overflow-hidden shadow-lg">
-        <div class="font-semibold bg-orange-400 text-gray-900 py-3 px-6 mb-0">
+        <div class="font-semibold bg-indigo-500 text-gray-100 py-3 px-6 mb-0">
             Chart
         </div>
         <apexchart ref="chart" width="100%" type="line" :options="options" :series="series"></apexchart>
