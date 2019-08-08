@@ -6,7 +6,7 @@
             <div class="w-full max-w-sm">
 
                 @if (session('resent'))
-                    <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100  px-3 py-4 mb-4" role="alert">
+                    <div class="text-sm border border-t-8 rounded text-indigo-700 border-indigo-600 bg-indigo-100  px-3 py-4 mb-4" role="alert">
                         {{ __('A fresh verification link has been sent to your email address.') }}
                     </div>
                 @endif
@@ -21,7 +21,7 @@
                             {{ __('Before proceeding, please check your email for a verification link.') }}
                         </p>
 
-                        <a class="bg-blue-500 hover:bg-blue-700 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline mx-auto" href="{{ route('verification.resend') }}">
+                        <a class="bg-indigo-500 hover:bg-indigo-700 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline no-underline mx-auto" href="{{ route('verification.resend') }}">
                             {{ __('Resend verification email') }}
                         </a>
                     </div>

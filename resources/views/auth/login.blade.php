@@ -6,7 +6,7 @@
             <div class="w-full max-w-sm">
                 <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
 
-                    <div class="font-semibold bg-orange-400 text-gray-900 py-3 px-6 mb-0">
+                    <div class="font-semibold bg-indigo-500 text-gray-100 py-3 px-6 mb-0">
                         {{ __('Login') }}
                     </div>
 
@@ -50,12 +50,12 @@
                         </div>
 
                         <div class="flex flex-wrap items-center">
-                            <button type="submit" class="bg-orange-500 hover:bg-orange-700 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-gray-100 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 {{ __('Login') }}
                             </button>
 
                             @if (Route::has('password.request'))
-                                <a class="text-sm text-orange-500 hover:text-orange-700 whitespace-no-wrap no-underline ml-auto" href="{{ route('password.request') }}">
+                                <a class="text-sm text-indigo-500 hover:text-indigo-700 whitespace-no-wrap no-underline ml-auto" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             @endif
@@ -63,7 +63,7 @@
                             @if (Route::has('register'))
                                 <p class="w-full text-xs text-center text-gray-700 mt-8 -mb-4">
                                     Don't have an account?
-                                    <a class="text-orange-500 hover:text-orange-700 no-underline" href="{{ route('register') }}">
+                                    <a class="text-indigo-500 hover:text-indigo-700 no-underline" href="{{ route('register') }}">
                                         Register
                                     </a>
                                 </p>

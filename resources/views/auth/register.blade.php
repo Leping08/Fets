@@ -6,7 +6,7 @@
             <div class="w-full max-w-sm">
                 <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
 
-                    <div class="font-semibold bg-orange-400 text-gray-900 py-3 px-6 mb-0">
+                    <div class="font-semibold bg-indigo-500 text-gray-100 py-3 px-6 mb-0">
                         {{ __('Register') }}
                     </div>
 
@@ -64,13 +64,13 @@
                         </div>
 
                         <div class="flex flex-wrap">
-                            <button type="submit" class="inline-block align-middle text-center select-none border font-bold whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-gray-100 bg-orange-500 hover:bg-orange-700">
+                            <button type="submit" class="inline-block align-middle text-center select-none border font-bold whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline text-gray-100 bg-indigo-500 hover:bg-indigo-700">
                                 {{ __('Register') }}
                             </button>
 
                             <p class="w-full text-xs text-center text-gray-700 mt-8 -mb-4">
                                 Already have an account?
-                                <a class="text-orange-500 hover:text-orange-700 no-underline" href="{{ route('login') }}">
+                                <a class="text-indigo-500 hover:text-indigo-700 no-underline" href="{{ route('login') }}">
                                     Login
                                 </a>
                             </p>
