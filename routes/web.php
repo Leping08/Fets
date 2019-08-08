@@ -14,9 +14,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Auth::routes();
+
+/* @see HomeController::index() */
 Route::get('/', 'HomeController@index')->name('home');
 
-Auth::routes();
+/* @see AboutController::index() */
+Route::get('/about', 'AboutController@index')->name('about');
+
+/* @see ContactUsController::index() */
+Route::get('/contact-us', 'ContactUsController@index')->name('contact-us');
+
+/* @see PrivacyPolicyController::index() */
+Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name('privacy-policy');
+
 
 Route::middleware('auth')->group(function () {
 

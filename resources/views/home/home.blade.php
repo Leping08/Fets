@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex items-center">
-        <div class="md:w-1/1 flex-1 md:mx-auto p-6">
+        <div class="md:w-1/1 flex-1 md:mx-auto p-2">
 
             @if (session('status'))
                 <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4" role="alert">
@@ -11,19 +11,23 @@
             @endif
 
 
-            <div class="flex items-center mx-6">
-                <div class="flex-1 px-6 text-left md:text-center xl:text-left inline-block align-text-bottom">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl xl:text-4xl font-light leading-tight">Data driven <span class="text-indigo-500 font-normal">weight loss.</span></h1>
-                    <p class="mt-6 leading-relaxed sm:text-lg md:text-xl xl:text-lg text-gray-600">
-                        Fets allows you to track, analyze, and find patterns about your health.
-                    </p>
-                    <div class="flex mt-6 justify-start md:justify-center xl:justify-start">
-                        <a href="" class="rounded-lg px-4 md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-indigo-500 hover:bg-indigo-600 md:text-lg xl:text-base text-white font-semibold leading-tight shadow-md">Get Started</a>
-                        <a href="" class="ml-4 rounded-lg px-4 md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-white hover:bg-gray-100 md:text-lg xl:text-base text-gray-800 font-semibold leading-tight shadow-md">Why Data?</a>
+            <div class="flex flex-wrap items-center sm:mx-4 md:mx-8 lg:mx-12">
+                <div class="w-full md:w-1/1 lg:w-1/2 xl:w-2/3">
+                    <div class="px-6 text-left md:text-center xl:text-left inline-block align-text-bottom">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl xl:text-4xl font-light leading-tight">Data driven <span class="text-indigo-500 font-normal">weight loss.</span></h1>
+                        <p class="mt-6 leading-relaxed sm:text-lg md:text-xl xl:text-lg text-gray-600">
+                            Fets allows you to track, analyze, and find patterns about your health.
+                        </p>
+                        <div class="flex mt-6 justify-start md:justify-center xl:justify-start">
+                            <a href="" class="rounded-lg px-4 md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-indigo-500 hover:bg-indigo-600 md:text-lg xl:text-base text-white font-semibold leading-tight shadow-md">Get Started</a>
+                            <a href="" class="ml-4 rounded-lg px-4 md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-white hover:bg-gray-100 md:text-lg xl:text-base text-gray-800 font-semibold leading-tight shadow-md">Why Data?</a>
+                        </div>
                     </div>
                 </div>
-                <div class="flex-1 mt-12 xl:mt-0 px-6">
-                    <img class="w-2/3 float-right" src="/img/icons/server_down.png" alt="">
+                <div class="w-full md:w-1/1 lg:w-1/2 xl:w-1/3">
+                    <div class="mt-12 xl:mt-0 px-6">
+                        <img class="" src="/img/icons/key_points.svg" alt="">
+                    </div>
                 </div>
             </div>
 
@@ -76,21 +80,24 @@
             @endphp
 
 
-            <div class="md:w-1/1 flex md:mx-auto">
+            <div class="flex flex-wrap sm:mx-4 md:mx-8 lg:mx-12">
                 @foreach($items as $key => $item)
 
-                    <div class="flex-1 max-w-sm rounded rounded-lg bg-white overflow-hidden shadow-lg m-4 hover:shadow-xl">
-                        <img class="w-full p-4" src="/img/icons/{{$item['icon']}}" alt="">
-                        <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2 text-gray-800 leading-tight">{{$item['name']}}</div>
-                            <p class="text-gray-700 text-base">{{$item['content']}}</p>
-                        </div>
-                        <div class="px-6 py-4">
-                            @foreach($item['hashtags'] as $hashtag)
-                                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 shadow">#{{$hashtag}}</span>
-                            @endforeach
+                    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+                        <div class="rounded rounded-lg bg-white overflow-hidden shadow-lg m-2 hover:shadow-xl">
+                            <img class="w-full p-4" src="/img/icons/{{$item['icon']}}" alt="">
+                            <div class="px-6 py-4">
+                                <div class="font-bold text-xl mb-2 text-gray-800 leading-tight">{{$item['name']}}</div>
+                                <p class="text-gray-700 text-base">{{$item['content']}}</p>
+                            </div>
+                            <div class="px-6 py-4">
+                                @foreach($item['hashtags'] as $hashtag)
+                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 shadow">#{{$hashtag}}</span>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
+
                 @endforeach
             </div>
         </div>
