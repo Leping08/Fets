@@ -30000,8 +30000,8 @@ var render = function() {
               staticClass: "text-white font-bold py-2 px-4 rounded mr-2",
               class: [
                 _vm.workoutButton
-                  ? "bg-purple-500 hover:bg-purple-400"
-                  : "bg-purple-400 hover:bg-purple-300 line-through"
+                  ? "bg-indigo-500 hover:bg-indigo-400"
+                  : "bg-indigo-400 hover:bg-indigo-300 line-through"
               ],
               on: {
                 click: function($event) {

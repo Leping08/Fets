@@ -13,4 +13,8 @@ class Measurement extends Model
         'weight',
         'date'
     ];
+
+    protected $casts = [
+        'date' => 'datetime'
+    ];
 }

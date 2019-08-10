@@ -39,5 +39,8 @@ Route::middleware('auth')->group(function () {
 
     /* @see MeasurementController::store() */
     Route::post('/measurements', 'MeasurementController@store');
+
+    /* @see MeasurementController::all() */
+    Route::get('/measurements/all', 'MeasurementController@all')->name('measurements-all');
 });
 

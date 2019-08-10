@@ -39,4 +39,10 @@ class MeasurementController extends Controller
 
         return redirect('dashboard');
     }
+
+    public function all()
+    {
+        $measurements = Measurement::where('user_id', Auth::id())->get();
+        return view('measurements.all', compact('measurements'));
+    }
 }

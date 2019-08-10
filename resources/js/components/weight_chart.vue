@@ -12,7 +12,7 @@
                 <button @click="toggle('Intake'); intakeButton = !intakeButton" v-bind:class="[ intakeButton ? 'bg-teal-500 hover:bg-teal-400' : 'line-through bg-teal-400 hover:bg-teal-300' ]" class="text-white font-bold py-2 px-4 rounded mr-2" >
                     Calories Eaten
                 </button>
-                <button @click="toggle('Workout'); workoutButton = !workoutButton" v-bind:class="[ workoutButton ? 'bg-purple-500 hover:bg-purple-400' : 'bg-purple-400 hover:bg-purple-300 line-through' ]" class="text-white font-bold py-2 px-4 rounded mr-2" >
+                <button @click="toggle('Workout'); workoutButton = !workoutButton" v-bind:class="[ workoutButton ? 'bg-indigo-500 hover:bg-indigo-400' : 'bg-indigo-400 hover:bg-indigo-300 line-through' ]" class="text-white font-bold py-2 px-4 rounded mr-2" >
                     Calories Burned
                 </button>
             </div>
