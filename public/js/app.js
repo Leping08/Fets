@@ -29050,6 +29050,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'weight_chart',
   props: ['measurements'],
@@ -30012,13 +30016,32 @@ var render = function() {
             },
             [_vm._v("\n                Calories Burned\n            ")]
           )
-        ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
       ])
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "p-2 flex-1 text-right" }, [
+      _c(
+        "a",
+        {
+          staticClass:
+            "text-white font-bold py-2 px-4 rounded mr-2 bg-orange-500 hover:bg-orange-400",
+          attrs: { href: "/measurements/all" }
+        },
+        [_vm._v("View All")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 

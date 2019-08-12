@@ -16,6 +16,10 @@
                     Calories Burned
                 </button>
             </div>
+            <div class="p-2 flex-1 text-right">
+                <a href="/measurements/all" class="text-white font-bold py-2 px-4 rounded mr-2 bg-orange-500 hover:bg-orange-400">View All</a>
+            </div>
+
         </div>
     </div>
 </template>

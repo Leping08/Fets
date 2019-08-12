@@ -11,6 +11,12 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="128x128" href="/img/favicon/favicon.png">
+
+    <!-- Material Design Icons -->
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.9.97/css/materialdesignicons.min.css">
 </head>
 <body class="bg-gray-200 h-screen antialiased leading-none">
     <div id="app">

@@ -42,38 +42,38 @@
                         'icon' => 'bar_chart.svg',
                         'content' => 'Find and understand trends about your eating, exercise, and weight.',
                         'hashtags' => [
-                            'intheknow',
-                            '200',
-                            'stable'
+                            'data',
+                            'trends',
+                            'graphs'
                         ]
                     ],
                     [
                         'name' => 'Compare With Friends',
                         'icon' => 'growth_friends.svg',
-                        'content' => 'Push your fiends forward by helping them find patterns and comparing data points.',
+                        'content' => 'Push your friends forward by helping them find patterns and comparing data points.',
                         'hashtags' => [
-                            'https',
-                            'encryption',
-                            'secure'
+                            'friends',
+                            'compete',
+                            'encouragement'
                         ]
                     ],
                     [
-                        'name' => 'Push You and Your Fiends',
+                        'name' => 'Motivate You and Your Friends',
                         'icon' => 'personal_trainer.svg',
-                        'content' => 'Match the content from any http call, ensuring the content you want is properly being sent over the wire.',
+                        'content' => 'Motivate and encourage your friends with challenges.',
                         'hashtags' => [
-                            'ttd',
-                            'assertsee'
+                            'motivation',
+                            'challenges',
+                            'kickass'
                         ]
                     ],
                     [
-                        'name' => 'Healthy Body Healthy Mind',
+                        'name' => 'Healthy Mind, Healthy Body',
                         'icon' => 'meditating.svg',
-                        'content' => 'Test API endpoints and ensure they are returning the expected content.',
+                        'content' => 'When your mind is healthy, your body will follow.',
                         'hashtags' => [
-                            'ttd',
-                            'api',
-                            'sleepingwell'
+                            'feelingood',
+                            'lovinlife'
                         ]
                     ]
                 ])
@@ -92,7 +92,7 @@
                             </div>
                             <div class="px-6 py-4">
                                 @foreach($item['hashtags'] as $hashtag)
-                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 shadow">#{{$hashtag}}</span>
+                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-800 mr-2 shadow">#{{$hashtag}}</span>
                                 @endforeach
                             </div>
                         </div>
