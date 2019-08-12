@@ -42,5 +42,8 @@ Route::middleware('auth')->group(function () {
 
     /* @see MeasurementController::all() */
     Route::get('/measurements/all', 'MeasurementController@all')->name('measurements-all');
+
+    /* @see MeasurementController::edit() */
+    Route::get('/measurement/{measurement}/edit', 'MeasurementController@edit');
 });
 

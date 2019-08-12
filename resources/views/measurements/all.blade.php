@@ -20,7 +20,7 @@
                             <td class="p-4 w-1/5">{{ $measurement->calories_eaten }}</td>
                             <td class="p-4 w-1/5">{{ $measurement->calories_burned }}</td>
                             <td class="p-4 w-1/5">{{ $measurement->weight }}</td>
-                            <td class="p-4 w-1/5"><i class="mdi mdi-pencil text-xl pr-2"></i> <i class="mdi mdi-delete text-xl pr-2"></i></td>
+                            <td class="p-4 w-1/5"><a href="/measurement/{{ $measurement->id }}/edit"><i class="mdi mdi-pencil text-xl pr-2"></i></a> <a href="/measurement/{{ $measurement->id }}"><i class="mdi mdi-delete text-xl pr-2"></i></a></td>
                         </tr>
                     @endforeach
                 </tbody>

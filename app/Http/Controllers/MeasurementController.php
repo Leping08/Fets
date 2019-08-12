@@ -45,4 +45,15 @@ class MeasurementController extends Controller
         $measurements = Measurement::where('user_id', Auth::id())->get();
         return view('measurements.all', compact('measurements'));
     }
+
+    public function edit(Measurement $measurement)
+    {
+        if($measurement->user_id === Auth::id()){
+            return view('measurements.edit', compact('measurement'));
+        } else {
+            return "<iframe src=\"https://giphy.com/embed/22CEvbj04nLLq\" width=\"480\" height=\"411\" frameBorder=\"0\" class=\"giphy-embed\" allowFullScreen></iframe><p><a href=\"https://giphy.com/gifs/funny-the-office-rage-22CEvbj04nLLq\">via GIPHY</a></p>";
+            //return "Uh uh grilllll, not in my housssseeeee";
+            //return back();
+        }
+    }
 }
