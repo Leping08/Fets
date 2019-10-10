@@ -10,6 +10,21 @@
                 </div>
             @endif
 
+            <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md mt-6 mb-6">
+                <div class="rounded overflow-hidden shadow-lg">
+                    <div class="font-semibold bg-indigo-500 text-gray-100 py-3 px-6 mb-0">
+                        Goal
+                    </div>
+                </div>
+                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+                    <div class="mb-5">
+                        <goal></goal>
+                    </div>
+                </div>
+            </div>
+
+
+
             <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
                 <weight-chart :measurements="{{json_encode($measurements)}}"></weight-chart>
             </div>

@@ -28,6 +28,7 @@ import VueApexCharts from 'vue-apexcharts'
 
 Vue.component('apexchart', VueApexCharts);
 Vue.component('weight-chart', require('./components/weight_chart').default);
+Vue.component('goal', require('./components/goal').default);
 
 
 

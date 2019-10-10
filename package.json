@@ -11,20 +11,21 @@
     },
     "devDependencies": {
         "axios": "^0.19",
-        "cross-env": "^5.1",
-        "laravel-mix": "^4.1.2",
-        "laravel-mix-purgecss": "^4.1",
+        "cross-env": "^5.2.1",
+        "laravel-mix": "^4.1.4",
+        "laravel-mix-purgecss": "^4.2.0",
         "laravel-mix-tailwind": "^0.1.0",
         "lodash": "^4.17.15",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.22.7",
-        "sass-loader": "^7.1.0",
-        "tailwindcss": "^1.0.5",
+        "sass": "^1.23.0",
+        "sass-loader": "^7.3.1",
+        "tailwindcss": "^1.1.2",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.4"
     },
     "dependencies": {
-        "apexcharts": "^3.8.3",
-        "vue-apexcharts": "^1.4.0"
+        "apexcharts": "^3.8.6",
+        "vue-apexcharts": "^1.5.0",
+        "vuejs-datepicker": "^1.6.2"
     }
 }
