@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Measurement;
+use App\Food;
+use App\Sleep;
+use App\Water;
+use App\Weight;
+use App\Workout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +24,18 @@ class MeasurementController extends Controller
 
     public function index()
     {
-        $measurements = Measurement::where('user_id', Auth::id())->get();
-        return view('dashboard', compact('measurements'));
+        $user_id = 1;
+        $data = collect();
+
+        $data->add([
+            'food' => Food::where('user_id', $user_id)->get(),
+            'sleep' => Sleep::where('user_id', $user_id)->get(),
+            'water' => Water::where('user_id', $user_id)->get(),
+            'weight' => Weight::where('user_id', $user_id)->get(),
+            'workout' => Workout::where('user_id', $user_id)->get(),
+        ]);
+
+        return view('dashboard', ['measurements' => $data[0]]);
     }
 
     public function store(Request $request)

@@ -4,23 +4,6 @@
             Chart
         </div>
         <apexchart ref="chart" width="100%" type="line" :options="options" :series="series"></apexchart>
-        <div class="flex">
-            <div class="p-2 flex-1">
-                <button @click="toggle('Weight'); weightButton = !weightButton" v-bind:class="[ weightButton ? 'bg-orange-500 hover:bg-orange-400' : 'line-through bg-orange-400 hover:bg-orange-300' ]" class="text-white font-bold py-2 px-4 rounded mr-2" >
-                    Weight
-                </button>
-                <button @click="toggle('Intake'); intakeButton = !intakeButton" v-bind:class="[ intakeButton ? 'bg-teal-500 hover:bg-teal-400' : 'line-through bg-teal-400 hover:bg-teal-300' ]" class="text-white font-bold py-2 px-4 rounded mr-2" >
-                    Calories Eaten
-                </button>
-                <button @click="toggle('Workout'); workoutButton = !workoutButton" v-bind:class="[ workoutButton ? 'bg-indigo-500 hover:bg-indigo-400' : 'bg-indigo-400 hover:bg-indigo-300 line-through' ]" class="text-white font-bold py-2 px-4 rounded mr-2" >
-                    Calories Burned
-                </button>
-            </div>
-            <div class="p-2 flex-1 text-right">
-                <a href="/measurements/all" class="text-white font-bold py-2 px-4 rounded mr-2 bg-orange-500 hover:bg-orange-400">View All</a>
-            </div>
-
-        </div>
     </div>
 </template>
 
@@ -32,9 +15,6 @@
         ],
         data: function() {
             return {
-                weightButton: true,
-                workoutButton: true,
-                intakeButton: true,
                 series: [
                     {
                         name: 'Weight',
@@ -47,33 +27,39 @@
                         data: []
                     },
                     {
-                        name: 'Intake',
+                        name: 'Food',
+                        type: 'line',
+                        data: []
+                    },
+                    {
+                        name: 'Sleep',
+                        type: 'line',
+                        data: []
+                    },
+                    {
+                        name: 'Water',
                         type: 'line',
                         data: []
                     }
                 ],
                 options: {
-                    colors: ['#ed8936', '#667eea', '#4fd1c5'],
-                    // dataLabels: {
-                    //     enabled: false
-                    // },
+                    stacked: true,
+                    colors: ['#ed8936', '#4fd1c5', '#f56565', '#667eea', '#4299e1'],
+                    dataLabels: {
+                        enabled: true
+                    },
                     stroke: {
-                        width: [3, 3, 3],
+                        width: [3, 3, 3, 3, 3],
                         curve: 'smooth'
                     },
-                    // title: {
-                    //     text: 'Weight Trend',
-                    //     align: 'left',
-                    //     offsetX: 110
-                    // },
                     xaxis: {
                         categories: [],
                         type: 'datetime',
                     },
                     yaxis: [
                         {
-                            min: 130,
-                            max: 180,
+                            min: 160,
+                            max: 175,
                             axisTicks: {
                                 show: true,
                             },
@@ -87,13 +73,41 @@
                                 style: {
                                     color: '#ed8936',
                                 }
-                            },
-                            tooltip: {
-                                enabled: true
                             }
                         },
                         {
-                            seriesName: 'Income',
+                            opposite: false,
+                            axisTicks: {
+                                show: true,
+                            },
+                            axisBorder: {
+                                show: true,
+                                color: '#4fd1c5'
+                            },
+                            title: {
+                                text: "Workout (cal)",
+                                style: {
+                                    color: '#4fd1c5',
+                                }
+                            },
+                        },
+                        {
+                            opposite: false,
+                            axisTicks: {
+                                show: true,
+                            },
+                            axisBorder: {
+                                show: true,
+                                color: '#f56565'
+                            },
+                            title: {
+                                text: "Food (cal)",
+                                style: {
+                                    color: '#f56565',
+                                }
+                            }
+                        },
+                        {
                             opposite: false,
                             axisTicks: {
                                 show: true,
@@ -103,59 +117,62 @@
                                 color: '#667eea'
                             },
                             title: {
-                                text: "Calories Out",
+                                text: "Sleep (hourss)",
                                 style: {
                                     color: '#667eea',
                                 }
-                            },
+                            }
                         },
                         {
-                            seriesName: 'Revenue',
                             opposite: false,
                             axisTicks: {
                                 show: true,
                             },
                             axisBorder: {
                                 show: true,
-                                color: '#38b2ac'
+                                color: '#4299e1'
                             },
                             title: {
-                                text: "Calories In",
+                                text: "Water (oz)",
                                 style: {
-                                    color: '#38b2ac',
+                                    color: '#4299e1',
                                 }
                             }
                         }
                     ],
-                    // tooltip: {
-                    //     fixed: {
-                    //         enabled: true,
-                    //         position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
-                    //         offsetY: 30,
-                    //         offsetX: 60
-                    //     },
-                    // },
+                    tooltip: {
+                        enabled: true,
+                        shared: true
+                    },
                     legend: {
-                        show: false,
-                        // horizontalAlign: 'left',
-                        // offsetX: 40
+                        show: true
                     }
                 }
             }
         },
         mounted() {
-            let x;
-            for (x of this.measurements) {
-                this.series[0].data.push(x.weight);
-                this.series[1].data.push(x.calories_burned);
-                this.series[2].data.push(x.calories_eaten);
-                this.options.xaxis.categories.push(x.date);
-            }
-        },
-        methods: {
-            toggle: function (series) {
-                this.$refs.chart.toggleSeries(series);
-            }
+            this.measurements.weight.forEach((weight) => {
+                this.series[0].data.push(weight.pounds);
+                this.options.xaxis.categories.push(weight.date);
+            });
+
+            this.measurements.workout.forEach((workout) => {
+                this.series[1].data.push(workout.calories);
+            });
+
+            this.measurements.food.forEach((food) => {
+                this.series[2].data.push(food.calories);
+            });
+
+            this.measurements.sleep.forEach((sleep) => {
+                this.series[3].data.push(sleep.hours);
+            });
+
+            this.measurements.water.forEach((water) => {
+                this.series[4].data.push(water.ounces);
+            });
+
+            this.$refs.chart.updateSeries(this.series);
         }
     }
 </script>

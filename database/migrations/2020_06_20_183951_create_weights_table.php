@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMeasurementsTable extends Migration
+class CreateWeightsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateMeasurementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('measurements', function (Blueprint $table) {
+        Schema::create('weights', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->date('date');
+            $table->float('pounds')->nullable();
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('calories_burned');
-            $table->unsignedInteger('calories_eaten');
-            $table->float('weight');
-            $table->dateTime('date');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,6 +30,6 @@ class CreateMeasurementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('measurements');
+        Schema::dropIfExists('weights');
     }
 }
