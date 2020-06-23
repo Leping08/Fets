@@ -27,7 +27,7 @@
                     </div>
                     <div class="w-full md:w-1/1 lg:w-1/2 xl:w-1/3">
                         <div class="mt-12 xl:mt-0 px-6">
-                            <img class="" src="/img/icons/key_points.svg" alt="">
+                            <img class="" src="{{ asset('/img/icons/key_points.svg') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
 
                         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
                             <div class="rounded rounded-lg bg-white overflow-hidden shadow-lg m-2 hover:shadow-xl">
-                                <img class="w-full p-4" src="/img/icons/{{$item['icon']}}" alt="">
+                                <img class="w-full p-4" src="{{ asset('/img/icons/' . $item['icon']) }}" alt="">
                                 <div class="px-6 py-4">
                                     <div class="font-bold text-xl mb-2 text-gray-800 leading-tight">{{$item['name']}}</div>
                                     <p class="text-gray-700 text-base">{{$item['content']}}</p>

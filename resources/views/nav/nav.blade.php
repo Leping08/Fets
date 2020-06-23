@@ -3,7 +3,7 @@
         <div class="flex items-center justify-center">
             <div class="mr-6">
                 <div>
-                    <a href="{{ route('home') }}"><img alt="" style="height: 50px;" src="/img/logos/fets.png"></a>
+                    <a href="{{ route('home') }}"><img alt="" style="height: 50px;" src="{{ asset('/img/logos/fets.png') }}"></a>
                 </div>
             </div>
             <div class="flex-1 text-right">
