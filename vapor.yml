@@ -5,7 +5,7 @@ environments:
         memory: 1024
         cli-memory: 512
         runtime: php-7.4
-        database: fets
+        database: production
         #domain: georgescatbox.com
         build:
             - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
