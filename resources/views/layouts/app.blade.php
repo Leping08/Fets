@@ -20,11 +20,19 @@
 </head>
 <body class="bg-gray-200 h-screen antialiased leading-none">
     <div id="app">
-        @include('nav.nav')
+        <div class="flex flex-col min-h-screen">
+            <div>
+                @include('nav.nav')
+            </div>
 
-        @yield('content')
+            <div class="flex flex-grow">
+                @yield('content')
+            </div>
 
-        @include('footer.footer')
+            <div>
+                @include('footer.footer')
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->

@@ -7,24 +7,15 @@ use App\Sleep;
 use App\Water;
 use App\Weight;
 use App\Workout;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MeasurementController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        $user_id = 1;
+        $user_id = 1; //TODO this is hard coded
         $data = collect();
 
         $data->add([
@@ -41,15 +32,46 @@ class MeasurementController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'date' => 'required|date',
-            'weight' => 'required|numeric|between:0,500.99',
-            'calories_burned' => 'required|numeric|between:0,5000',
-            'calories_eaten' => 'required|numeric|between:0,5000'
+            'date' => ['required', 'date'],
+            'metric' => ['required', 'in:food,sleep,water,weight,workout'],
+            'value' => ['required', 'numeric', 'between:0,5000'],
         ]);
 
-        $data['user_id'] = Auth::id();
+        //$data['user_id'] = Auth::id();
+        $user_id = 1; //TODO this is hard coded for now
+        $date = Carbon::parse($data['date']);
 
-        Measurement::create($data);
+        if ($data['metric'] === 'food') {
+            Food::create([
+                'date' => $date,
+                'user_id' => $user_id,
+                'calories' => $data['value']
+            ]);
+        } elseif ($data['metric'] === 'sleep') {
+            Sleep::create([
+                'date' => $date,
+                'user_id' => $user_id,
+                'hours' => $data['value']
+            ]);
+        } elseif ($data['metric'] === 'water') {
+            Water::create([
+                'date' => $date,
+                'user_id' => $user_id,
+                'ounces' => $data['value']
+            ]);
+        } elseif ($data['metric'] === 'weight') {
+            Weight::create([
+                'date' => $date,
+                'user_id' => $user_id,
+                'pounds' => $data['value']
+            ]);
+        } elseif ($data['metric'] === 'workout') {
+            Workout::create([
+                'date' => $date,
+                'user_id' => $user_id,
+                'calories' => $data['value']
+            ]);
+        }
 
         return redirect('dashboard');
     }
