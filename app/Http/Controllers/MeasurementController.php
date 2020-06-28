@@ -19,11 +19,11 @@ class MeasurementController extends Controller
         $data = collect();
 
         $data->add([
-            'food' => Food::where('user_id', $user_id)->get(),
-            'sleep' => Sleep::where('user_id', $user_id)->get(),
-            'water' => Water::where('user_id', $user_id)->get(),
-            'weight' => Weight::where('user_id', $user_id)->get(),
-            'workout' => Workout::where('user_id', $user_id)->get(),
+            'food' => Food::where('user_id', $user_id)->orderBy('date','asc')->get(),
+            'sleep' => Sleep::where('user_id', $user_id)->orderBy('date','asc')->get(),
+            'water' => Water::where('user_id', $user_id)->orderBy('date','asc')->get(),
+            'weight' => Weight::where('user_id', $user_id)->orderBy('date','asc')->get(),
+            'workout' => Workout::where('user_id', $user_id)->orderBy('date','asc')->get(),
         ]);
 
         return view('dashboard', ['measurements' => $data[0]]);
