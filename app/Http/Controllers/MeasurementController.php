@@ -16,9 +16,8 @@ class MeasurementController extends Controller
     public function index()
     {
         $user_id = 1; //TODO this is hard coded
-        $data = collect();
 
-        $data->add([
+        $data = collect([
             'food' => Food::where('user_id', $user_id)->orderBy('date','asc')->get(),
             'sleep' => Sleep::where('user_id', $user_id)->orderBy('date','asc')->get(),
             'water' => Water::where('user_id', $user_id)->orderBy('date','asc')->get(),
@@ -26,7 +25,21 @@ class MeasurementController extends Controller
             'workout' => Workout::where('user_id', $user_id)->orderBy('date','asc')->get(),
         ]);
 
-        return view('dashboard', ['measurements' => $data[0]]);
+        $days = $data->flatten(1)->groupBy('date');
+
+        //Filter out days with all the data
+        $days_missing_data = $days->filter(function ($item) {
+            return $item->count() < 5;
+        });
+
+        //Add classes to day for data we have
+        $days_missing_data_classes = $days_missing_data->map(function ($day) use ($user_id) {
+            return $day->map(function ($measurement) {
+                return class_basename($measurement);
+            });
+        });
+
+        return view('dashboard', ['measurements' => $data, 'days_missing_data_classes' => $days_missing_data_classes]);
     }
 
     public function store(Request $request)
@@ -74,22 +87,5 @@ class MeasurementController extends Controller
         }
 
         return redirect('dashboard');
-    }
-
-    public function all()
-    {
-        $measurements = Measurement::where('user_id', Auth::id())->get();
-        return view('measurements.all', compact('measurements'));
-    }
-
-    public function edit(Measurement $measurement)
-    {
-        if($measurement->user_id === Auth::id()){
-            return view('measurements.edit', compact('measurement'));
-        } else {
-            return "<iframe src=\"https://giphy.com/embed/22CEvbj04nLLq\" width=\"480\" height=\"411\" frameBorder=\"0\" class=\"giphy-embed\" allowFullScreen></iframe><p><a href=\"https://giphy.com/gifs/funny-the-office-rage-22CEvbj04nLLq\">via GIPHY</a></p>";
-            //return "Uh uh grilllll, not in my housssseeeee";
-            //return back();
-        }
     }
 }

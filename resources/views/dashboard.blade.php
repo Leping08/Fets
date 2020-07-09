@@ -23,18 +23,54 @@
 {{--                </div>--}}
 {{--            </div>--}}
 
-            <div class="bg-white border border-2 rounded shadow-md w-full">
+            <div class="bg-white border border-2 rounded w-full">
                 <weight-chart :measurements="{{json_encode($measurements)}}"></weight-chart>
             </div>
 
-            <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md mt-6 mb-6">
-                <div class="rounded overflow-hidden shadow-lg">
+            @if($days_missing_data_classes)
+                <div class="flex flex-col break-words bg-white border border-2 rounded- shadow-md my-6">
+                    <div class="rounded-t overflow-hidden shadow">
+                        <div class="font-semibold bg-indigo-500 text-gray-100 py-3 px-6 mb-0">
+                            Missing Data
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        @foreach($days_missing_data_classes as $day => $measurements)
+                            <div class="m-2 text-gray-700">
+                                <div class="my-2">
+                                    {{ \Carbon\Carbon::parse($day)->format('m/d/yy') }}
+                                </div>
+                                <div class="my-2 mx-4 text-red-700">
+                                    @if(! $measurements->contains('Food'))
+                                        Food <br />
+                                    @endif
+                                    @if(! $measurements->contains('Sleep'))
+                                        Sleep <br />
+                                    @endif
+                                    @if(! $measurements->contains('Water'))
+                                        Water <br />
+                                    @endif
+                                    @if(! $measurements->contains('Weight'))
+                                        Weight <br />
+                                    @endif
+                                    @if(! $measurements->contains('Workout'))
+                                        Workout <br />
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md my-6">
+                <div class="rounded-t overflow-hidden shadow">
                     <div class="font-semibold bg-indigo-500 text-gray-100 py-3 px-6 mb-0">
                         Add Measurement
                     </div>
                 </div>
                 <div class="w-full">
-                    <form method="POST" action="/measurements" class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+                    <form method="POST" action="/measurements" class="p-6">
                         @csrf()
                         <div class="mb-5">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="date">

@@ -19,15 +19,6 @@ Auth::routes();
 /* @see HomeController::index() */
 Route::get('/', 'HomeController@index')->name('home');
 
-/* @see AboutController::index() */
-Route::get('/about', 'AboutController@index')->name('about');
-
-/* @see ContactUsController::index() */
-Route::get('/contact-us', 'ContactUsController@index')->name('contact-us');
-
-/* @see PrivacyPolicyController::index() */
-Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name('privacy-policy');
-
 
 Route::middleware('auth')->group(function () {
 
@@ -39,11 +30,5 @@ Route::middleware('auth')->group(function () {
 
     /* @see MeasurementController::store() */
     Route::post('/measurements', 'MeasurementController@store');
-
-    /* @see MeasurementController::all() */
-    Route::get('/measurements/all', 'MeasurementController@all')->name('measurements-all');
-
-    /* @see MeasurementController::edit() */
-    Route::get('/measurement/{measurement}/edit', 'MeasurementController@edit');
 });
 
