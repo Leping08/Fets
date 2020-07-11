@@ -338,7 +338,7 @@ __webpack_require__.r(__webpack_exports__);
     this.measurements.weight.forEach(function (weight) {
       _this.series[0].data.push(weight.pounds);
 
-      _this.options.xaxis.categories.push(weight.date);
+      _this.options.xaxis.categories.push(Date.parse(weight.date + ' EST'));
     });
     this.measurements.workout.forEach(function (workout) {
       _this.series[1].data.push(workout.calories);

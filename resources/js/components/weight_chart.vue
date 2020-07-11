@@ -153,7 +153,7 @@
         mounted() {
             this.measurements.weight.forEach((weight) => {
                 this.series[0].data.push(weight.pounds);
-                this.options.xaxis.categories.push(weight.date);
+                this.options.xaxis.categories.push(Date.parse(weight.date + ' EST'));
             });
 
             this.measurements.workout.forEach((workout) => {
