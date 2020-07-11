@@ -206,27 +206,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'weight_chart',
-  props: ['measurements'],
+  props: ['measurements', 'days'],
   data: function data() {
     return {
       series: [{
         name: 'Weight',
+        unit: 'pounds',
         type: 'line',
         data: []
       }, {
         name: 'Workout',
+        unit: 'calories',
         type: 'line',
         data: []
       }, {
         name: 'Food',
+        unit: 'calories',
         type: 'line',
         data: []
       }, {
         name: 'Sleep',
+        unit: 'hours',
         type: 'line',
         data: []
       }, {
         name: 'Water',
+        unit: 'ounces',
         type: 'line',
         data: []
       }],
@@ -335,24 +340,18 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    this.measurements.weight.forEach(function (weight) {
-      _this.series[0].data.push(weight.pounds);
+    //Set the days from the prop
+    this.days.forEach(function (day) {
+      _this.options.xaxis.categories.push(Date.parse(day + ' EST'));
+    }); //Loop over all the series
 
-      _this.options.xaxis.categories.push(Date.parse(weight.date + ' EST'));
+    this.series.forEach(function (series, index) {
+      //Set the data from each series json
+      _this.series[index].data = _this.measurements[series.name.toLowerCase()].map(function (data) {
+        return data[series.unit.toLowerCase()];
+      });
     });
-    this.measurements.workout.forEach(function (workout) {
-      _this.series[1].data.push(workout.calories);
-    });
-    this.measurements.food.forEach(function (food) {
-      _this.series[2].data.push(food.calories);
-    });
-    this.measurements.sleep.forEach(function (sleep) {
-      _this.series[3].data.push(sleep.hours);
-    });
-    this.measurements.water.forEach(function (water) {
-      _this.series[4].data.push(water.ounces);
-    });
-    this.$refs.chart.updateSeries(this.series);
+    this.$refs.chart.updateSeries(this.series, true);
   }
 });
 

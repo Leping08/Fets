@@ -39,7 +39,11 @@ class MeasurementController extends Controller
             });
         });
 
-        return view('dashboard', ['measurements' => $data, 'days_missing_data_classes' => $days_missing_data_classes]);
+        return view('dashboard', [
+            'measurements' => $data,
+            'days' => $days->keys(),
+            'days_missing_data_classes' => $days_missing_data_classes
+        ]);
     }
 
     public function store(Request $request)

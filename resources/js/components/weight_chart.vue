@@ -11,33 +11,39 @@
     export default {
         name: 'weight_chart',
         props: [
-            'measurements'
+            'measurements',
+            'days'
         ],
         data: function() {
             return {
                 series: [
                     {
                         name: 'Weight',
+                        unit: 'pounds',
                         type: 'line',
                         data: []
                     },
                     {
                         name: 'Workout',
+                        unit: 'calories',
                         type: 'line',
                         data: []
                     },
                     {
                         name: 'Food',
+                        unit: 'calories',
                         type: 'line',
                         data: []
                     },
                     {
                         name: 'Sleep',
+                        unit: 'hours',
                         type: 'line',
                         data: []
                     },
                     {
                         name: 'Water',
+                        unit: 'ounces',
                         type: 'line',
                         data: []
                     }
@@ -151,28 +157,20 @@
             }
         },
         mounted() {
-            this.measurements.weight.forEach((weight) => {
-                this.series[0].data.push(weight.pounds);
-                this.options.xaxis.categories.push(Date.parse(weight.date + ' EST'));
+            //Set the days from the prop
+            this.days.forEach((day) => {
+                this.options.xaxis.categories.push(Date.parse(day + ' EST'));
             });
 
-            this.measurements.workout.forEach((workout) => {
-                this.series[1].data.push(workout.calories);
+            //Loop over all the series
+            this.series.forEach((series, index) => {
+                //Set the data from each series json
+                this.series[index].data = this.measurements[series.name.toLowerCase()].map((data) => {
+                    return data[series.unit.toLowerCase()];
+                });
             });
 
-            this.measurements.food.forEach((food) => {
-                this.series[2].data.push(food.calories);
-            });
-
-            this.measurements.sleep.forEach((sleep) => {
-                this.series[3].data.push(sleep.hours);
-            });
-
-            this.measurements.water.forEach((water) => {
-                this.series[4].data.push(water.ounces);
-            });
-
-            this.$refs.chart.updateSeries(this.series);
+            this.$refs.chart.updateSeries(this.series, true);
         }
     }
 </script>
